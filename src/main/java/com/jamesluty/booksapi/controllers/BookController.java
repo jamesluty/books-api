@@ -1,5 +1,7 @@
 package com.jamesluty.booksapi.controllers;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +19,18 @@ public class BookController {
 	}
 	
 	@GetMapping("/books/{id}")
-	public String books(@PathVariable("id") Long id, Model model) {
+	public String booksId(@PathVariable("id") Long id, Model model) {
 		Book book = bookService.findBook(id);
 		
 		model.addAttribute("book", book);
 		return "Show.jsp";
+	}
+	
+	@GetMapping("/books")
+	public String books(Model model) {
+		List<Book> allBooks = bookService.allBooks();
+		System.out.println(allBooks);
+		model.addAttribute("allBooks", allBooks);
+		return "index.jsp";
 	}
 }
