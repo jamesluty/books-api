@@ -8,6 +8,9 @@
 <title>Books API</title>
 </head>
 <body>
-	<h1>Testing books API</h1>
+	<h1><c:out value="${book.title }"/></h1>
+	<p>Description: ${book.description }</p>
+	<p>Description: ${book.language }</p>
+	<p>Description: ${book.numberOfPages }</p>
 </body>
 </html>
